@@ -121,3 +121,6 @@ $ php spark make:seeder name_seeder
 ## Runs the specified seeder to populate known data into the database
 $ php spark db:seed name_seeder
 
+## Displays a list of all migrations and whether they've been run or not
+$ php spark migrate:status
+
