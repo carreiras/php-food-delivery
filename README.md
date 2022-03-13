@@ -93,16 +93,24 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 Information on running the CodeIgniter test suite can be found in the [README.md](tests/README.md) file in the tests directory.
 
 #  Commands
+
 ## Spark help
 $ php spark
-## Running application
+
+## Launches the CodeIgniter PHP-Development Server
 $ php serve spark
-## Creating a controller
+
+## Generates a new controller file
 $ php spark make:controller [folder/]filename
-## Creating a migration in the database
+
+## Locates and runs all new migrations against the database
 $ php spark migrate
 
+## Generates a new migration file
 $ php spark make:migration name_migration
 
+## Runs the "down" method for all migrations in the last batch
 $ php spark migrate:rollback
 
+## Generates a new model file
+$ php spark make:model name_model
