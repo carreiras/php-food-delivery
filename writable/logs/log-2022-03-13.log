@@ -46,3 +46,23 @@ CRITICAL - 2022-03-13 15:48:47 --> Undefined variable: var
 #8 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
 #10 {main}
+CRITICAL - 2022-03-13 16:03:52 --> Invalid file: .php
+#0 D:\Documentos\Projetos\Estudos\php-food-delivery\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('.php')
+#1 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Common.php(1089): CodeIgniter\View\View->render('', Array, true)
+#2 D:\Documentos\Projetos\Estudos\php-food-delivery\app\Controllers\Testes.php(9): view('')
+#3 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(832): App\Controllers\Testes->index()
+#4 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Testes))
+#5 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
+#8 {main}
+CRITICAL - 2022-03-13 16:04:05 --> Invalid file: .php
+#0 D:\Documentos\Projetos\Estudos\php-food-delivery\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('.php')
+#1 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Common.php(1089): CodeIgniter\View\View->render('', Array, true)
+#2 D:\Documentos\Projetos\Estudos\php-food-delivery\app\Controllers\Testes.php(9): view('')
+#3 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(832): App\Controllers\Testes->index()
+#4 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Testes))
+#5 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
+#8 {main}
