@@ -114,3 +114,10 @@ $ php spark migrate:rollback
 
 ## Generates a new model file
 $ php spark make:model name_model
+
+## Generates a new seeder file
+$ php spark make:seeder name_seeder
+
+## Runs the specified seeder to populate known data into the database
+$ php spark db:seed name_seeder
+
