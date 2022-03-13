@@ -99,4 +99,6 @@ $ php spark
 $ php serve spark
 ## Creating a controller
 $ php spark make:controller [folder/]filename
+## Creating a migrate
+$ php spark migrate
 
