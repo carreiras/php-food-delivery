@@ -103,6 +103,9 @@ $ php serve spark
 ## Generates a new controller file
 $ php spark make:controller [folder/]filename
 
+## Create a new database schema
+$ php spark db:create name_database
+
 ## Locates and runs all new migrations against the database
 $ php spark migrate
 
