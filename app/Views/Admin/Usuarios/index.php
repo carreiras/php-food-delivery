@@ -52,8 +52,8 @@
         $("#query").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "<?php echo site_url('admin/usuarios/procurar'); ?>",
-                    dataType: json,
+                    url: "<?php echo site_url('/admin/usuarios/procurar'); ?>",
+                    dataType: "json",
                     data: {
                         term: request.term
                     },
