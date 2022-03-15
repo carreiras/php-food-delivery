@@ -14,3 +14,19 @@ Main connection [MySQLi]: Nenhuma conexão pôde ser feita porque a máquina de 
 #8 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
 #10 {main}
+CRITICAL - 2022-03-15 16:32:20 --> Undefined property: stdClass::$nome
+#0 D:\Documentos\Projetos\Estudos\php-food-delivery\app\Controllers\Admin\Usuarios.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\Documentos\\P...', 37, Array)
+#1 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(832): App\Controllers\Admin\Usuarios->procurar()
+#2 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Usuarios))
+#3 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
+#6 {main}
+CRITICAL - 2022-03-15 16:34:11 --> Undefined property: stdClass::$nome
+#0 D:\Documentos\Projetos\Estudos\php-food-delivery\app\Controllers\Admin\Usuarios.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\Documentos\\P...', 37, Array)
+#1 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(832): App\Controllers\Admin\Usuarios->procurar()
+#2 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Usuarios))
+#3 D:\Documentos\Projetos\Estudos\php-food-delivery\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\Documentos\Projetos\Estudos\php-food-delivery\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 D:\Documentos\Projetos\Estudos\php-food-delivery\system\Commands\Server\rewrite.php(43): require_once('D:\\Documentos\\P...')
+#6 {main}
