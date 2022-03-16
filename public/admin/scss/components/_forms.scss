@@ -8,8 +8,7 @@
   color: $input-placeholder-color;
   width: auto;
   border: none;
-  display: flex;
-  align-items: center;
+
   .input-group-text {
     border-color: $border-color;
     padding: $input-padding-y .75rem;
@@ -50,7 +49,7 @@ select {
   }
   &.has-danger {
     .form-control {
-      border-color: $danger;
+      border-color: theme-color(danger);
     }
   }
   .file-upload-default {

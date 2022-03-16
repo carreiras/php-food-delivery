@@ -33,7 +33,7 @@
                                 <td><a href='<?php echo site_url("admin/usuarios/show/$usuario->id"); ?>'><?php echo $usuario->nome; ?></a></td>
                                 <td><?php echo $usuario->email; ?></td>
                                 <td><?php echo $usuario->cpf; ?></td>
-                                <td><?php echo ($usuario->ativo) ? '<span class="badge bg-primary">Sim</span>' : '<span class="badge bg-danger">Não</span>'; ?></td>
+                                <td><?php echo ($usuario->ativo) ? '<span class="badge badge-primary">Sim</span>' : '<span class="badge badge-danger">Não</span>'; ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

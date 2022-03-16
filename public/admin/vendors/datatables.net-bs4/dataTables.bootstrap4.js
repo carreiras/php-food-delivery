@@ -1,9 +1,9 @@
-/*! DataTables Bootstrap 5 integration
+/*! DataTables Bootstrap 4 integration
  * ©2011-2017 SpryMedia Ltd - datatables.net/license
  */
 
 /**
- * DataTables integration for Bootstrap 5. This requires Bootstrap 5 and
+ * DataTables integration for Bootstrap 4. This requires Bootstrap 4 and
  * DataTables 1.10 or newer.
  *
  * This file sets the defaults and adds options to DataTables to style its
@@ -83,7 +83,7 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 		for ( i=0, ien=buttons.length ; i<ien ; i++ ) {
 			button = buttons[i];
 
-			if ( Array.isArray( button ) ) {
+			if ( $.isArray( button ) ) {
 				attach( container, button );
 			}
 			else {
@@ -175,7 +175,7 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 	);
 
 	if ( activeEl !== undefined ) {
-		$(host).find( '[data-dt-idx='+activeEl+']' ).trigger('focus');
+		$(host).find( '[data-dt-idx='+activeEl+']' ).focus();
 	}
 };
 
