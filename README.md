@@ -101,29 +101,32 @@ $ php spark
 $ php serve spark
 
 ## Generates a new controller file
-$ php spark make:controller [folder/]filename
+$ php spark make:controller "[folder/]filename"
 
 ## Create a new database schema
-$ php spark db:create name_database
+$ php spark db:create "name_database"
 
 ## Locates and runs all new migrations against the database
 $ php spark migrate
 
 ## Generates a new migration file
-$ php spark make:migration name_migration
+$ php spark make:migration "name_migration"
 
 ## Runs the "down" method for all migrations in the last batch
 $ php spark migrate:rollback
 
 ## Generates a new model file
-$ php spark make:model name_model
+$ php spark make:model "name_model"
 
 ## Generates a new seeder file
-$ php spark make:seeder name_seeder
+$ php spark make:seeder "name_seeder"
 
 ## Runs the specified seeder to populate known data into the database
-$ php spark db:seed name_seeder
+$ php spark db:seed "name_seeder"
 
 ## Displays a list of all migrations and whether they've been run or not
 $ php spark migrate:status
+
+## Generates a new entity file
+$php spark make:entity "name_entity"     
 

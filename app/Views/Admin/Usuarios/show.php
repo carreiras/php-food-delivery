@@ -32,14 +32,24 @@
                     <?php echo ($usuario->is_admin) ? 'Administrador' : 'Cliente'; ?>
                 </p>
                 <p class="card-text">
-                    <span class="font-weight-bold">Criado em: </span>
-                    <?php echo $usuario->criado_em; ?>
+                    <span class="font-weight-bold">Criado: </span>
+                    <?php echo $usuario->criado_em->humanize(); ?>
                 </p>
                 <p class="card-text">
-                    <span class="font-weight-bold">Atualizado em: </span>
-                    <?php echo $usuario->atualizado_em; ?>
+                    <span class="font-weight-bold">Atualizado: </span>
+                    <?php echo $usuario->atualizado_em->humanize(); ?>
                 </p>
-
+                <div class="mt-4">
+                    <a href="<?php echo site_url("admin/usuarios/editar/$usuario->id"); ?>" class="btn btn-dark btn-sm mr-2">
+                        Editar
+                    </a>
+                    <a href="<?php echo site_url("admin/usuarios/excluir/$usuario->id"); ?>" class="btn btn-danger btn-sm mr-2">
+                        Excluir
+                    </a>
+                    <a href="<?php echo site_url("admin/usuarios/"); ?>" class="btn btn-light text-dark btn-sm mr-2">
+                        Voltar
+                    </a>
+                </div>
             </div>
         </div>
     </div>
