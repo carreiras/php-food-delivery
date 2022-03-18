@@ -15,6 +15,14 @@
                 <h4 class="card-title text-white"><?php echo esc($titulo); ?></h4>
             </div>
             <div class="card-body">
+                <?php if (session()->has('errors_model')): ?>
+                    <ul>
+                        <?php foreach (session()->has('errors_model') as $error): ?>
+                            <li class="text-danger"><?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+
                 <?php echo form_open("admin/usuarios/atualizar/$usuario->id"); ?>
                 <?php echo $this->include('Admin/Usuarios/form'); ?>
                 <?php echo form_close(); ?>

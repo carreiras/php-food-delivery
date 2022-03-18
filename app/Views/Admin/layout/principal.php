@@ -254,6 +254,42 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
+                <?php if (session()->has('sucesso')): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Perfeito!</strong> <?php echo session('sucesso'); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->has('info')): ?>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <strong>Informação!</strong> <?php echo session('info'); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->has('atencao')): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Atenção!</strong> <?php echo session('atencao'); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->has('error')): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Erro!</strong> <?php echo session('error'); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <!-- Essa section renderizará os conteúdos específicos  da view que estender esse layout -->
                 <?php echo $this->renderSection('conteudo') ?>
 
