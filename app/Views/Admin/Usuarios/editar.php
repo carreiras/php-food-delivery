@@ -15,7 +15,9 @@
                 <h4 class="card-title text-white"><?php echo esc($titulo); ?></h4>
             </div>
             <div class="card-body">
+                <?php echo form_open("admin/usuarios/atualizar/$usuario->id"); ?>
                 <?php echo $this->include('Admin/Usuarios/form'); ?>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
