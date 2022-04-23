@@ -23,9 +23,9 @@
                     </ul>
                 <?php endif; ?>
 
-                <?= form_open("admin/usuarios/atualizar/$usuario->id"); ?>
+                <?= form_open("admin/usuarios/cadastrar"); ?>
                 <?= $this->include('Admin/Usuarios/form'); ?>
-                <a href="<?= site_url("admin/usuarios/show/$usuario->id"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
+                <a href="<?= site_url("admin/usuarios"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
                 <?= form_close(); ?>
             </div>
         </div>

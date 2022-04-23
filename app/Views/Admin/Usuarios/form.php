@@ -1,19 +1,19 @@
 <div class="row">
     <div class="form-group col-md-4">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" name="nome" id="nome" value="<?php echo old('nome', esc($usuario->nome)); ?>">
+        <input type="text" class="form-control" name="nome" id="nome" value="<?= old('nome', esc($usuario->nome)); ?>">
     </div>
     <div class="form-group col-md-3">
         <label for="cpf">Cpf</label>
-        <input type="text" class="form-control cpf" name="cpf" id="cpf" value="<?php echo old('cpf', esc($usuario->cpf)); ?>">
+        <input type="text" class="form-control cpf" name="cpf" id="cpf" value="<?= old('cpf', esc($usuario->cpf)); ?>">
     </div>
     <div class="form-group col-md-2">
         <label for="telefone">Telefone</label>
-        <input type="text" class="form-control sp_celphones" name="telefone" id="telefone" value="<?php echo old('telefone', esc($usuario->telefone)); ?>">
+        <input type="text" class="form-control sp_celphones" name="telefone" id="telefone" value="<?= old('telefone', esc($usuario->telefone)); ?>">
     </div>
     <div class="form-group col-md-3">
         <label for="email">E-mail</label>
-        <input type="text" class="form-control" name="email" id="email" value="<?php echo old('email', esc($usuario->email)); ?>">
+        <input type="text" class="form-control" name="email" id="email" value="<?= old('email', esc($usuario->email)); ?>">
     </div>
 </div>
 
@@ -47,4 +47,3 @@
 <br />
 
 <button type="submit" class="btn btn-primary btn-sm mr-2">Salvar</button>
-<a href="<?php echo site_url("admin/usuarios/show/$usuario->id"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
