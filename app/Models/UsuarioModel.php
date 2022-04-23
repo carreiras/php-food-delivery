@@ -39,6 +39,10 @@ class UsuarioModel extends Model
         ],
     ];
 
+    // Eventos callback
+    protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
+
     public function procurar($term)
     {
         if ($term == null) {
@@ -52,5 +56,16 @@ class UsuarioModel extends Model
     {
         unset($this->validationRules['password']);
         unset($this->validationRules['password_confirmation']);
+    }
+
+    protected function hashPassword(array $data)
+    {
+        if (isset($data['data']['password'])) {
+            $data['data']['password_hash'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+            unset($data['data']['password']);
+            unset($data['data']['password_confirmation']);
+        }
+
+        return $data;
     }
 }
