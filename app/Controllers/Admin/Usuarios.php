@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Entities\Usuario;
 
 class Usuarios extends BaseController
 {
@@ -53,6 +54,18 @@ class Usuarios extends BaseController
         return view('Admin/Usuarios/show', $data);
     }
 
+    public function criar()
+    {
+        $usuario = new Usuario();
+
+        $data = [
+            'titulo' => "Criando novo usuário",
+            'usuario' => $usuario,
+        ];
+
+        return view('Admin/Usuarios/criar', $data);
+    }
+
     public function editar($id = null)
     {
         $usuario = $this->buscaUsuarioOu404($id);
@@ -63,6 +76,27 @@ class Usuarios extends BaseController
         ];
 
         return view('Admin/Usuarios/editar', $data);
+    }
+
+    public function cadastrar()
+    {
+        if ($this->request->getMethod() === 'post') {
+            $usuario = new Usuario($this->request->getPost());
+
+
+            if ($this->usuarioModel->protect(false)->save($usuario)) {
+                return redirect()->to(site_url("admin/usuarios/show/" . $this->usuarioModel->getInsertID()))
+                    ->with('sucesso', "Usuário $usuario->nome cadastrado com sucesso");
+            } else {
+                return redirect()->back()
+                    ->with('errors_model', $this->usuarioModel->errors())
+                    ->with('atencao', 'Por favor, verifique os dados abaixo')
+                    ->withInput();
+            }
+        } else {
+            // Não é POST
+            return redirect()->back();
+        }
     }
 
     public function atualizar($id = null)
@@ -86,7 +120,7 @@ class Usuarios extends BaseController
             }
 
             if ($this->usuarioModel->protect(false)->save($usuario)) {
-                return redirect()->to(site_url("admin/usuarios/editar/$usuario->id"))
+                return redirect()->to(site_url("admin/usuarios/show/$usuario->id"))
                     ->with('sucesso', "Usuário $usuario->nome atualizado com sucesso");
             } else {
                 return redirect()->back()
@@ -95,6 +129,7 @@ class Usuarios extends BaseController
                     ->withInput();
             }
         } else {
+            // Não é POST
             return redirect()->back();
         }
     }
