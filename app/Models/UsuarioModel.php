@@ -45,9 +45,12 @@ class UsuarioModel extends Model
             return [];
         }
 
-        return $this->select('id, nome')
-            ->like('nome', $term)
-            ->get()
-            ->getResult();
+        return $this->select('id, nome')->like('nome', $term)->get()->getResult();
+    }
+
+    public function desabilitaValidacaoSenha()
+    {
+        unset($this->validationRules['password']);
+        unset($this->validationRules['password_confirmation']);
     }
 }

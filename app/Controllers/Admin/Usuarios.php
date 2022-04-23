@@ -17,7 +17,7 @@ class Usuarios extends BaseController
     {
         $data = [
             'titulo' => 'Listando os usuários',
-            'usuarios' => $this->usuarioModel->findAll()
+            'usuarios' => $this->usuarioModel->findAll(),
         ];
 
         return view('Admin/Usuarios/index', $data);
@@ -47,7 +47,7 @@ class Usuarios extends BaseController
 
         $data = [
             'titulo' => "Detalhando o usuário $usuario->nome",
-            'usuario' => $usuario
+            'usuario' => $usuario,
         ];
 
         return view('Admin/Usuarios/show', $data);
@@ -59,10 +59,43 @@ class Usuarios extends BaseController
 
         $data = [
             'titulo' => "Editando o usuário $usuario->nome",
-            'usuario' => $usuario
+            'usuario' => $usuario,
         ];
 
         return view('Admin/Usuarios/editar', $data);
+    }
+
+    public function atualizar($id = null)
+    {
+        if ($this->request->getMethod() === 'post') {
+            $usuario = $this->buscaUsuarioOu404($id);
+            $post = $this->request->getPost();
+
+            if (empty($post['password'])) {
+                $this->usuarioModel->desabilitaValidacaoSenha();
+                unset($post['password']);
+                unset($post['password_confirmation']);
+            }
+
+
+            $usuario->fill($post);
+
+            if (!$usuario->hasChanged()) {
+                return redirect()->back()
+                    ->with('info', 'Não há dados para atualizar');
+            }
+
+            if ($this->usuarioModel->protect(false)->save($usuario)) {
+                return redirect()->to(site_url("admin/usuarios/$usuario->id"))
+                    ->with('sucesso', "Usuário $usuario->nome atualizado com sucesso");
+            } else {
+                return redirect()->back()
+                    ->with('errors_model', $this->usuarioModel->errors())
+                    ->with('atencao', 'Por favor, verifique os dados abaixo');
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     private function buscaUsuarioOu404(int $id = null)
