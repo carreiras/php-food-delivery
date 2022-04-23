@@ -86,12 +86,13 @@ class Usuarios extends BaseController
             }
 
             if ($this->usuarioModel->protect(false)->save($usuario)) {
-                return redirect()->to(site_url("admin/usuarios/$usuario->id"))
+                return redirect()->to(site_url("admin/usuarios/editar/$usuario->id"))
                     ->with('sucesso', "Usuário $usuario->nome atualizado com sucesso");
             } else {
                 return redirect()->back()
                     ->with('errors_model', $this->usuarioModel->errors())
-                    ->with('atencao', 'Por favor, verifique os dados abaixo');
+                    ->with('atencao', 'Por favor, verifique os dados abaixo')
+                    ->withInput();
             }
         } else {
             return redirect()->back();

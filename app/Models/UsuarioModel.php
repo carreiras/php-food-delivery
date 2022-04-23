@@ -25,17 +25,17 @@ class UsuarioModel extends Model
 
     protected $validationMessages = [
         'nome' => [
-            'required' => 'Este campo é obrigatório.',
+            'required' => 'O campo nome é obrigatório.',
             'min_length' => 'O tamaho mínimo é de 4 caracteres.',
             'max_length' => 'O tamaho máximo é de 120 caracteres.',
         ],
         'email' => [
-            'required' => 'Este campo é obrigatório.',
-            'is_unique' => 'Este e-mail já existe.',
+            'required' => 'O campo e-mail é obrigatório.',
+            'is_unique' => 'O e-mail informado já existe.',
         ],
         'cpf' => [
-            'required' => 'Este campo é obrigatório.',
-            'is_unique' => 'Este CPF já existe.',
+            'required' => 'O campo CPF é obrigatório.',
+            'is_unique' => 'O CPF informado já existe.',
         ],
     ];
 
