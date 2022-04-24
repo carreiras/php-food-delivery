@@ -18,7 +18,7 @@
                     <input id="query" name="query" placeholder="Pesquise por um usuário" class="form-control bg-light" mb-5>
                 </div>
 
-                <br/>
+                <br />
 
                 <a href="<?= site_url("admin/usuarios/criar"); ?>" class="btn btn-success btn-sm mb-2">Cadastrar</a>
 
