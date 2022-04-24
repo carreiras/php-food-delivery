@@ -83,7 +83,6 @@ class Usuarios extends BaseController
         if ($this->request->getMethod() === 'post') {
             $usuario = new Usuario($this->request->getPost());
 
-
             if ($this->usuarioModel->protect(false)->save($usuario)) {
                 return redirect()->to(site_url("admin/usuarios/show/" . $this->usuarioModel->getInsertID()))
                     ->with('sucesso', "Usuário $usuario->nome cadastrado com sucesso");
