@@ -35,20 +35,46 @@
                     <span class="font-weight-bold">Criado: </span>
                     <?php echo $usuario->criado_em->humanize(); ?>
                 </p>
-                <p class="card-text">
-                    <span class="font-weight-bold">Atualizado: </span>
-                    <?php echo $usuario->atualizado_em->humanize(); ?>
-                </p>
+
+                <?php if ($usuario->deletado_em == null): ?>
+                    <p class="card-text">
+                        <span class="font-weight-bold">Atualizado: </span>
+                        <?php echo $usuario->atualizado_em->humanize(); ?>
+                    </p>
+                <?php else: ?>
+                    <p class="card-text">
+                        <span class="font-weight-bold text-danger">Excluído: </span>
+                        <?php echo $usuario->deletado_em->humanize(); ?>
+                    </p>
+                <?php endif; ?>
+
                 <div class="mt-4">
-                    <a href="<?php echo site_url("admin/usuarios/editar/$usuario->id"); ?>" class="btn btn-dark btn-sm mr-2">
-                        Editar
-                    </a>
-                    <a href="<?php echo site_url("admin/usuarios/excluir/$usuario->id"); ?>" class="btn btn-danger btn-sm mr-2">
-                        Excluir
-                    </a>
-                    <a href="<?php echo site_url("admin/usuarios/"); ?>" class="btn btn-light text-dark btn-sm mr-2">
-                        Voltar
-                    </a>
+                    <?php if ($usuario->deletado_em == null): ?>
+
+                        <a href="<?php echo site_url("admin/usuarios/editar/$usuario->id"); ?>"
+                           class="btn btn-dark btn-sm mr-2">
+                            Editar
+                        </a>
+                        <a href="<?php echo site_url("admin/usuarios/excluir/$usuario->id"); ?>"
+                           class="btn btn-danger btn-sm mr-2">
+                            Excluir
+                        </a>
+                        <a href="<?php echo site_url("admin/usuarios/"); ?>"
+                           class="btn btn-light text-dark btn-sm mr-2">
+                            Voltar
+                        </a>
+                    <?php else: ?>
+
+                        <a href="<?php echo site_url("admin/usuarios/desfazerexclusao/$usuario->id"); ?>"
+                           class="btn btn-dark btn-sm mr-2">
+                            Desfazer exclusão
+                        </a>
+
+                        <a href="<?php echo site_url("admin/usuarios/"); ?>"
+                           class="btn btn-light text-dark btn-sm mr-2">
+                            Voltar
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

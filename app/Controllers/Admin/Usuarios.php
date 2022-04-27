@@ -72,6 +72,12 @@ class Usuarios extends BaseController
     {
         $usuario = $this->buscaUsuarioOu404($id);
 
+        if ($usuario->deletado_em != null) {
+            return redirect()
+                ->back()
+                ->with('info', "Usuário $usuario->nome encontra-se excluído. Não é possível editar.");
+        }
+
         $data = [
             'titulo' => "Editando usuário: $usuario->nome",
             'usuario' => $usuario,
@@ -106,6 +112,13 @@ class Usuarios extends BaseController
     {
         if ($this->request->getMethod() === 'post') {
             $usuario = $this->buscaUsuarioOu404($id);
+
+            if ($usuario->deletado_em != null) {
+                return redirect()
+                    ->back()
+                    ->with('info', "Usuário $usuario->nome encontra-se excluído. Não é possível atualizar.");
+            }
+
             $post = $this->request->getPost();
 
             if (empty($post['password'])) {
@@ -141,6 +154,12 @@ class Usuarios extends BaseController
     public function excluir($id = null)
     {
         $usuario = $this->buscaUsuarioOu404($id);
+
+        if ($usuario->deletado_em != null) {
+            return redirect()
+                ->back()
+                ->with('info', "Usuário $usuario->nome já encontra-se excluído.");
+        }
 
         if ($usuario->is_admin) {
             return redirect()->back()
@@ -179,19 +198,12 @@ class Usuarios extends BaseController
                 ->with('atencao', 'Verifique os erros abaixo.')
                 ->withInput();
         }
-
-//        $data = [
-//            'titulo' => "Editando o usuário $usuario->nome",
-//            'usuario' => $usuario,
-//        ];
-//
-//        return view('Admin/Usuarios/editar', $data);
     }
 
     private function buscaUsuarioOu404(int $id = null)
     {
         if (!$id || !$usuario = $this->usuarioModel->withDeleted(true)->where('id', $id)->first()) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Não encontramos o usuário $id");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Não encontramos o usuário: $id");
         }
 
         return $usuario;
