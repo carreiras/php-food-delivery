@@ -19,7 +19,7 @@ class Usuarios extends BaseController
     {
         $data = [
             'titulo' => 'Listando os usuários',
-            'usuarios' => $this->usuarioModel->findAll(),
+            'usuarios' => $this->usuarioModel->withDeleted()->findAll(),
         ];
 
         return view('Admin/Usuarios/index', $data);

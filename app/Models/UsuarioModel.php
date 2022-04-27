@@ -8,13 +8,21 @@ class UsuarioModel extends Model
 {
     protected $table = 'usuarios';
     protected $returnType = 'App\Entities\Usuario';
-    protected $useSoftDeletes = true;
     protected $allowedFields = ['nome', 'email', 'telefone'];
+
+    /**
+     * Datas
+     */
     protected $useTimestamps = true;
     protected $createdField = 'criado_em';
     protected $updatedField = 'atualizado_em';
+    protected $dateFormat = 'datetime'; // Para uso com o $useSoftDeletes
+    protected $useSoftDeletes = true;
     protected $deletedField = 'deletado_em';
 
+    /**
+     * Validações
+     */
     protected $validationRules = [
         'nome' => 'required|min_length[4]|max_length[120]',
         'email' => 'required|valid_email|is_unique[usuarios.email]',
@@ -39,7 +47,9 @@ class UsuarioModel extends Model
         ],
     ];
 
-    // Eventos callback
+    /**
+     * Eventos callback
+     */
     protected $beforeInsert = ['hashPassword'];
     protected $beforeUpdate = ['hashPassword'];
 
