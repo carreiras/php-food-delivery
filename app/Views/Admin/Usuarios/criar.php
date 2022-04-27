@@ -1,39 +1,39 @@
-<?= $this->extend('Admin/layout/principal'); ?>
+<?php echo $this->extend('Admin/layout/principal'); ?>
 
-<?= $this->section('titulo'); ?>
-<?= $titulo; ?>
-<?= $this->endSection(); ?>
+<?php echo $this->section('titulo'); ?>
+<?php echo $titulo; ?>
+<?php echo $this->endSection(); ?>
 
-<?= $this->section('estilos'); ?>
-<?= $this->endSection(); ?>
+<?php echo $this->section('estilos'); ?>
+<?php echo $this->endSection(); ?>
 
-<?= $this->section('conteudo'); ?>
+<?php echo $this->section('conteudo'); ?>
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header bg-primary pb-0 pt-4">
-                <h4 class="card-title text-white"><?= esc($titulo); ?></h4>
+                <h4 class="card-title text-white"><?php echo esc($titulo); ?></h4>
             </div>
             <div class="card-body">
-                <?php if (session()->has('errors_model')) : ?>
+                <?php if (session()->has('errors_model')): ?>
                     <ul>
-                        <?php foreach (session('errors_model') as $error) : ?>
-                            <li class="text-danger"><?= $error; ?></li>
-                        <?php endforeach; ?>
+                        <?php foreach (session('errors_model') as $error): ?>
+                            <li class="text-danger"><?php echo $error; ?></li>
+                        <?php endforeach;?>
                     </ul>
-                <?php endif; ?>
+                <?php endif;?>
 
-                <?= form_open("admin/usuarios/cadastrar"); ?>
-                <?= $this->include('Admin/Usuarios/form'); ?>
-                <a href="<?= site_url("admin/usuarios"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
-                <?= form_close(); ?>
+                <?php echo form_open("admin/usuarios/cadastrar"); ?>
+                <?php echo $this->include('Admin/Usuarios/form'); ?>
+                <a href="<?php echo site_url("admin/usuarios"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
 </div>
-<?= $this->endSection(); ?>
+<?php echo $this->endSection(); ?>
 
-<?= $this->section('scripts'); ?>
-<script src="<?= site_url(); ?>admin/vendors/mask/jquery.mask.min.js"></script>
-<script src="<?= site_url(); ?>admin/vendors/mask/app.js"></script>
-<?= $this->endSection(); ?>
+<?php echo $this->section('scripts'); ?>
+<script src="<?php echo site_url(); ?>admin/vendors/mask/jquery.mask.min.js"></script>
+<script src="<?php echo site_url(); ?>admin/vendors/mask/app.js"></script>
+<?php echo $this->endSection(); ?>
