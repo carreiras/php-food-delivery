@@ -10,7 +10,6 @@ class Usuarios extends BaseController
 
     private $usuarioModel;
 
-
     public function __construct()
     {
         $this->usuarioModel = new \App\Models\UsuarioModel();
@@ -19,8 +18,9 @@ class Usuarios extends BaseController
     public function index()
     {
         $data = [
-            'titulo' => 'Listando usuários',
-            'usuarios' => $this->usuarioModel->withDeleted()->findAll(),
+            'titulo'   => 'Listando usuários',
+            'usuarios' => $this->usuarioModel->withDeleted(true)->paginate(10),
+            'pager'    => $this->usuarioModel->pager,
         ];
 
         return view('Admin/Usuarios/index', $data);
@@ -33,12 +33,12 @@ class Usuarios extends BaseController
         }
 
         $usuarios = $this->usuarioModel->procurar($this->request->getGet('term'));
-        $retorno = [];
+        $retorno  = [];
 
         foreach ($usuarios as $usuario) {
-            $data['id'] = $usuario->id;
+            $data['id']    = $usuario->id;
             $data['value'] = $usuario->nome;
-            $retorno[] = $data;
+            $retorno[]     = $data;
         }
 
         return $this->response->setJSON($retorno);
@@ -49,7 +49,7 @@ class Usuarios extends BaseController
         $usuario = $this->buscaUsuarioOu404($id);
 
         $data = [
-            'titulo' => "Detalhando usuário: $usuario->nome",
+            'titulo'  => "Detalhando usuário: $usuario->nome",
             'usuario' => $usuario,
         ];
 
@@ -61,7 +61,7 @@ class Usuarios extends BaseController
         $usuario = new Usuario();
 
         $data = [
-            'titulo' => "Criando novo usuário",
+            'titulo'  => "Criando novo usuário",
             'usuario' => $usuario,
         ];
 
@@ -72,14 +72,14 @@ class Usuarios extends BaseController
     {
         $usuario = $this->buscaUsuarioOu404($id);
 
-        if ($usuario->deletado_em != null) {
+        if (null != $usuario->deletado_em) {
             return redirect()
                 ->back()
                 ->with('info', "Usuário $usuario->nome encontra-se excluído. Não é possível editar.");
         }
 
         $data = [
-            'titulo' => "Editando usuário: $usuario->nome",
+            'titulo'  => "Editando usuário: $usuario->nome",
             'usuario' => $usuario,
         ];
 
@@ -113,7 +113,7 @@ class Usuarios extends BaseController
         if ($this->request->getMethod() === 'post') {
             $usuario = $this->buscaUsuarioOu404($id);
 
-            if ($usuario->deletado_em != null) {
+            if (null != $usuario->deletado_em) {
                 return redirect()
                     ->back()
                     ->with('info', "Usuário $usuario->nome encontra-se excluído. Não é possível atualizar.");
@@ -155,7 +155,7 @@ class Usuarios extends BaseController
     {
         $usuario = $this->buscaUsuarioOu404($id);
 
-        if ($usuario->deletado_em != null) {
+        if (null != $usuario->deletado_em) {
             return redirect()
                 ->back()
                 ->with('info', "Usuário $usuario->nome já encontra-se excluído.");
@@ -174,7 +174,7 @@ class Usuarios extends BaseController
         }
 
         $data = [
-            'titulo' => "Excluindo o usuário: $usuario->nome",
+            'titulo'  => "Excluindo o usuário: $usuario->nome",
             'usuario' => $usuario,
         ];
 
@@ -185,7 +185,7 @@ class Usuarios extends BaseController
     {
         $usuario = $this->buscaUsuarioOu404($id);
 
-        if ($usuario->deletado_em == null) {
+        if (null == $usuario->deletado_em) {
             return redirect()->back()->with('info', 'Apenas usuários excluídos podem ser recuperados.');
         }
 

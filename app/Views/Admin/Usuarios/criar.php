@@ -5,7 +5,7 @@
 <?php echo $this->endSection(); ?>
 
 <?php echo $this->section('estilos'); ?>
-<?php echo $this->endSection(); ?>
+<?php   echo $this->endSection(); ?>
 
 <?php echo $this->section('conteudo'); ?>
 <div class="row">
@@ -16,16 +16,17 @@
             </div>
             <div class="card-body">
                 <?php if (session()->has('errors_model')): ?>
-                    <ul>
-                        <?php foreach (session('errors_model') as $error): ?>
-                            <li class="text-danger"><?php echo $error; ?></li>
-                        <?php endforeach;?>
-                    </ul>
+                <ul>
+                    <?php foreach (session('errors_model') as $error): ?>
+                    <li class="text-danger"><?php echo $error; ?></li>
+                    <?php endforeach;?>
+                </ul>
                 <?php endif;?>
 
                 <?php echo form_open("admin/usuarios/cadastrar"); ?>
                 <?php echo $this->include('Admin/Usuarios/form'); ?>
-                <a href="<?php echo site_url("admin/usuarios"); ?>" class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
+                <a href="<?php echo site_url("admin/usuarios"); ?>"
+                    class="btn btn-light text-dark btn-sm mr-2">Voltar</a>
                 <?php echo form_close(); ?>
             </div>
         </div>
