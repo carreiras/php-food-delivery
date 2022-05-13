@@ -22,7 +22,7 @@ class Usuarios extends BaseController
             'usuarios' => $this->usuarioModel->withDeleted(true)->paginate(10),
             'pager'    => $this->usuarioModel->pager,
         ];
-
+        
         return view('Admin/Usuarios/index', $data);
     }
 
@@ -47,8 +47,7 @@ class Usuarios extends BaseController
     public function show($id = null)
     {
         $usuario = $this->buscaUsuarioOu404($id);
-
-        $data = [
+        $data    = [
             'titulo'  => "Detalhando usuário: $usuario->nome",
             'usuario' => $usuario,
         ];
@@ -59,8 +58,7 @@ class Usuarios extends BaseController
     public function criar()
     {
         $usuario = new Usuario();
-
-        $data = [
+        $data    = [
             'titulo'  => "Criando novo usuário",
             'usuario' => $usuario,
         ];
@@ -168,7 +166,6 @@ class Usuarios extends BaseController
 
         if ($this->request->getMethod() === 'post') {
             $this->usuarioModel->delete($id);
-
             return redirect()->to(site_url('admin/usuarios'))
                 ->with('sucesso', "Usuário excluído com sucesso: $usuario->nome.");
         }
@@ -208,5 +205,4 @@ class Usuarios extends BaseController
 
         return $usuario;
     }
-
 }

@@ -6,39 +6,39 @@ use CodeIgniter\Model;
 
 class UsuarioModel extends Model
 {
-    protected $table = 'usuarios';
-    protected $returnType = 'App\Entities\Usuario';
+    protected $table         = 'usuarios';
+    protected $returnType    = 'App\Entities\Usuario';
     protected $allowedFields = ['nome', 'email', 'telefone'];
 
     // Datas
-    protected $useTimestamps = true;
-    protected $createdField = 'criado_em';
-    protected $updatedField = 'atualizado_em';
-    protected $dateFormat = 'datetime'; // Para uso com o $useSoftDeletes
+    protected $useTimestamps  = true;
+    protected $createdField   = 'criado_em';
+    protected $updatedField   = 'atualizado_em';
+    protected $dateFormat     = 'datetime'; // Para uso com o $useSoftDeletes
     protected $useSoftDeletes = true;
-    protected $deletedField = 'deletado_em';
+    protected $deletedField   = 'deletado_em';
 
     // Validações
     protected $validationRules = [
-        'nome' => 'required|min_length[4]|max_length[120]',
-        'email' => 'required|valid_email|is_unique[usuarios.email]',
-        'cpf' => 'required|exact_length[14]|validaCpf|is_unique[usuarios.cpf]',
-        'password' => 'required|min_length[6]',
+        'nome'                  => 'required|min_length[4]|max_length[120]',
+        'email'                 => 'required|valid_email|is_unique[usuarios.email]',
+        'cpf'                   => 'required|exact_length[14]|validaCpf|is_unique[usuarios.cpf]',
+        'password'              => 'required|min_length[6]',
         'password_confirmation' => 'required_with[password]|matches[password]',
     ];
 
     protected $validationMessages = [
-        'nome' => [
-            'required' => 'O campo nome é obrigatório.',
+        'nome'  => [
+            'required'   => 'O campo nome é obrigatório.',
             'min_length' => 'O tamanho mínimo é de 4 caracteres.',
             'max_length' => 'O tamanho máximo é de 120 caracteres.',
         ],
         'email' => [
-            'required' => 'O campo e-mail é obrigatório.',
+            'required'  => 'O campo e-mail é obrigatório.',
             'is_unique' => 'O e-mail informado já existe.',
         ],
-        'cpf' => [
-            'required' => 'O campo CPF é obrigatório.',
+        'cpf'   => [
+            'required'  => 'O campo CPF é obrigatório.',
             'is_unique' => 'O CPF informado já existe.',
         ],
     ];
@@ -49,7 +49,7 @@ class UsuarioModel extends Model
 
     public function procurar($term)
     {
-        if ($term == null) {
+        if (null == $term) {
             return [];
         }
 
@@ -72,6 +72,7 @@ class UsuarioModel extends Model
             unset($data['data']['password']);
             unset($data['data']['password_confirmation']);
         }
+
         return $data;
     }
 
