@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use CodeIgniter\Database\Exceptions\DataException;
 use CodeIgniter\Model;
 
 class UsuarioModel extends Model
@@ -82,5 +83,16 @@ class UsuarioModel extends Model
             ->where('id', $id)
             ->set('deletado_em', null)
             ->update();
+    }
+
+    /**
+     * @uses Class Autenticao
+     * @param string $email 
+     * @return array|object|null $usuario
+     * @throws DataException 
+     */
+    public function buscaUsuarioPorEmail(string $email)
+    {
+        return $this->where('email', $email)->first();
     }
 }
