@@ -1,22 +1,15 @@
 <?php
 
-use CodeIgniter\Database\Exceptions\DataException;
 use Config\App;
 
 /***
+ *
  * @descrição: essa biblioteca/classe cuidará da parte de autenticação de nossa aplicação
  */
 class Autenticacao
 {
     private $usuario;
 
-    /**
-     * 
-     * @param string $email 
-     * @param string $password 
-     * @return bool 
-     * @throws DataException 
-     */
     public function login(string $email, string $password)
     {
         $usuarioModel = new \App\Models\UsuarioModel();
@@ -39,11 +32,39 @@ class Autenticacao
         return true;
     }
 
-    /**
-     * @uses function login
-     * @param object $usuario 
-     * @return void 
-     */
+    public function logout()
+    {
+        session()->destroy();
+    }
+
+    public function pegaUsuarioLogado()
+    {
+        if (null === $this->usuario) {
+            $this->usuario = $this->pegaUsuarioDaSessao();
+        }
+
+        return $this->usuario;
+    }
+
+    private function pegaUsuarioDaSessao()
+    {
+        if (!session()->has('usuario_id')) {
+            return null;
+        }
+
+        $usuarioModel = new \App\Models\UsuarioModel();
+        $usuario      = $usuarioModel->find(session()->get('usuario_id'));
+
+        if ($usuario && $usuario->ativo) {
+            return $usuario;
+        }
+    }
+
+    public function estaLogado()
+    {
+        $this->pegaUsuarioLogado() !== null;
+    }
+
     private function logaUsuario(object $usuario)
     {
         $session = session();
@@ -51,4 +72,5 @@ class Autenticacao
         $session->regenerate();
         $session->set('usuario_id', $usuario->id);
     }
+
 }
