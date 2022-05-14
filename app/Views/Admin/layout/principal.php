@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Food Delivery | <?=$this->renderSection('titulo')?></title>
 
     <link rel="shortcut icon" href="<?=site_url('admin/')?>images/favicon.png" />
     <link rel="stylesheet" href="<?=site_url('admin/')?>vendors/mdi/css/materialdesignicons.min.css">
@@ -13,7 +14,6 @@
 
     <!-- Essa section renderizará os estilos específicos da view que estender esse layout -->
     <?=$this->renderSection('estilos')?>
-    <title>Food Delivery | <?=$this->renderSection('titulo')?></title>
 </head>
 
 <body>
