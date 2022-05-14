@@ -17,6 +17,8 @@ class Usuarios extends BaseController
 
     public function index()
     {
+        $usuario = service('autenticacao');
+
         $data = [
             'titulo'   => 'Listando usuários',
             'usuarios' => $this->usuarioModel->withDeleted(true)->paginate(10),

@@ -6,6 +6,10 @@ use Config\App;
  *
  * @descrição: essa biblioteca/classe cuidará da parte de autenticação de nossa aplicação
  */
+
+/**
+ * [Description Autenticacao]
+ */
 class Autenticacao
 {
     private $usuario;
